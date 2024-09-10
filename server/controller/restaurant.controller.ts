@@ -280,7 +280,7 @@ export const getRestaurant = async (req: Request, res: Response) => {
     console.log("User ID from request:", req.id);
     try {
         const restaurant = await Restaurant.findOne({ user: req.id }).populate('menus');
-        console.log("Fetched restaurant:", restaurant); // Log the fetched restaurant
+        console.log("Fetched restaurant:", restaurant);
 
         if (!restaurant) {
             return res.status(404).json({
@@ -386,7 +386,6 @@ export const searchRestaurant = async (req: Request, res: Response) => {
         const searchQuery = req.query.searchQuery as string || "";
         const selectedCuisines = (req.query.selectedCuisines as string || "").split(",").filter(cuisine => cuisine);
         const query: any = {};
-        // basic search based on searchText (name ,city, country)
         console.log(selectedCuisines);
 
         if (searchText) {
@@ -396,15 +395,15 @@ export const searchRestaurant = async (req: Request, res: Response) => {
                 { country: { $regex: searchText, $options: 'i' } },
             ]
         }
-        // filter on the basis of searchQuery
+        console.log(searchText)
         if (searchQuery) {
             query.$or = [
                 { restaurantName: { $regex: searchQuery, $options: 'i' } },
                 { cuisines: { $regex: searchQuery, $options: 'i' } }
             ]
         }
-        // console.log(query);
-        // ["momos", "burger"]
+        console.log(searchQuery)
+
         if (selectedCuisines.length > 0) {
             query.cuisines = { $in: selectedCuisines }
         }

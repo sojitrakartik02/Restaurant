@@ -15,8 +15,6 @@ const Orders = () => {
   const { restaurantOrder, getRestaurantOrders, updateRestaurantOrder } =
     useRestaurantStore();
 
-  const { cart } = useCartStore();
-
   const totalAmoutOrder = (cartItem) => {
     return cartItem.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };

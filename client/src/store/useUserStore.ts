@@ -97,7 +97,6 @@ export const useUserStore = create<UserState>()(persist((set) => ({
                 toast.error(response.data.message);
             }
         } catch (error: any) {
-            // Handle various types of errors
             if (error.response) {
                 toast.error(error.response.data.message || "An error occurred");
             } else if (error.request) {
@@ -106,7 +105,6 @@ export const useUserStore = create<UserState>()(persist((set) => ({
                 toast.error("An unexpected error occurred");
             }
         } finally {
-            // Always reset loading state
             set({ loading: false });
             console.log("Loading state reset to false after login attempt");
         }

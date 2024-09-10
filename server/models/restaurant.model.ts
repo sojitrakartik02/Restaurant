@@ -42,7 +42,8 @@ const restaurantSchema = new mongoose.Schema<IRestaurantDocument>({
     cuisines: {
         type: [String],
         required: true,
-    }, menus: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }],
+    },
+    menus: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }],
     imageUrl: {
         type: String,
         required: true

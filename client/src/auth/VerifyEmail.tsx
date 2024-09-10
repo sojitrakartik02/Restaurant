@@ -16,7 +16,6 @@ const VerifyEmail = () => {
       newOtp[index] = value;
       setOtp(newOtp);
     }
-    // Move to the next input field id a digit is entered
     if (value !== "" && index < 5) {
       inputRef.current[index + 1].focus();
     }
@@ -36,7 +35,8 @@ const VerifyEmail = () => {
     try {
       await verifyEmail(verificationCode);
       navigate("/");
-    } catch (error) {console.log(error);
+    } catch (error) {
+      console.log(error);
     }
   };
 

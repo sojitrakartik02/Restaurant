@@ -12,7 +12,7 @@ type ThemeStore = {
 export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
-      theme: "light", // Default theme
+      theme: "light",
       setTheme: (theme: Theme) => {
         const root = window.document.documentElement;
         root.classList.remove("light", "dark");
@@ -29,7 +29,6 @@ export const useThemeStore = create<ThemeStore>()(
           const storedTheme = localStorage.getItem("vite-ui-theme") as Theme;
           const themeToApply = storedTheme;
 
-          // Apply the theme to the HTML root element
           const root = window.document.documentElement;
           root.classList.remove("light", "dark");
           root.classList.add(themeToApply);
@@ -39,8 +38,8 @@ export const useThemeStore = create<ThemeStore>()(
       },
     }),
     {
-      name: "theme-store", // Name of the storage key
-      storage: createJSONStorage(() => localStorage), // Use localStorage for persistence
+      name: "theme-store",
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );

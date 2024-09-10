@@ -2,7 +2,7 @@ import {
   Loader2,
   LocateIcon,
   Mail,
-  MapPin ,
+  MapPin,
   MapPinnedIcon,
   Plus,
 } from "lucide-react";
@@ -14,20 +14,21 @@ import { Button } from "./ui/button";
 import { useUserStore } from "@/store/useUserStore";
 
 const Profile = () => {
-  const {user, updateProfile} = useUserStore();
+  const { user, updateProfile } = useUserStore();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [profileData, setProfileData] = useState({
     fullname: user?.fullname || "",
-    email: user?.email || "", 
+    email: user?.email || "",
     address: user?.address || "",
     city: user?.city || "",
     country: user?.country || "",
     profilePicture: user?.profilePicture || "",
   });
   const imageRef = useRef<HTMLInputElement | null>(null);
-  const [selectedProfilePicture, setSelectedProfilePicture] =
-    useState<string>( profileData.profilePicture || "");
- 
+  const [selectedProfilePicture, setSelectedProfilePicture] = useState<string>(
+    profileData.profilePicture || ""
+  );
+
   const fileChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -65,8 +66,8 @@ const Profile = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar className="relative md:w-28 md:h-28 w-20 h-20">
-            <AvatarImage src={selectedProfilePicture}/>
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarImage src={selectedProfilePicture} />
+            <AvatarFallback>SK</AvatarFallback>
             <input
               ref={imageRef}
               className="hidden"
@@ -96,7 +97,7 @@ const Profile = () => {
           <div className="w-full">
             <Label>Email</Label>
             <input
-            disabled
+              disabled
               name="email"
               value={profileData.email}
               onChange={changeHandler}
@@ -148,7 +149,9 @@ const Profile = () => {
             Please wait
           </Button>
         ) : (
-          <Button type="submit" className="bg-orange hover:bg-hoverOrange">Update</Button>
+          <Button type="submit" className="bg-orange hover:bg-hoverOrange">
+            Update
+          </Button>
         )}
       </div>
     </form>

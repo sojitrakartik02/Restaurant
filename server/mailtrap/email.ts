@@ -29,10 +29,10 @@ export const sendWelcomeEmail = async (email: string, name: string) => {
     const res = await client.testing.send({
         from: sender,
         to: recipient,
-        subject: 'Welcome to PatelEats',
+        subject: 'Welcome to FOODS',
         html: htmlContent,
         template_variables: {
-            company_info_name: "PatelEats",
+            company_info_name: "Kartik",
             name: name
         }
     }).then(() =>

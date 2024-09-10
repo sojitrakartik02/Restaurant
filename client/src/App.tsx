@@ -85,7 +85,6 @@ const appRouter = createBrowserRouter([
         path: "/order/status",
         element: <Success />,
       },
-      // admin services start from here
       {
         path: "/admin/restaurant",
         element: (
