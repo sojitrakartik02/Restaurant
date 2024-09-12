@@ -26,7 +26,6 @@ const corsOptions = {
     credentials: true
 };
 
-// default middleware for any mern project
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
